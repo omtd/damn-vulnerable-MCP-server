@@ -62,6 +62,12 @@ class Challenge1Server:
                 return f"User information for {username}: {users[username]}"
             else:
                 return f"User not found: {username}"
+
+        # Add a tool that returns the server status (for health checks)
+        @self.mcp.tool()
+        def get_server_status() -> str:
+            """Return a simple status message for health checks"""
+            return "Challenge 1 server is running"
         
         # Mount the SSE server
         self.mount_sse_server()
